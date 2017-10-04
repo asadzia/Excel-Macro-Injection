@@ -317,3 +317,36 @@ private static void WriteExcelFile(string filePath)
         conn.Close();
     }
 }
+
+/*
+* Description: The macro which gets the total USED rows in the excel spreadsheet
+* Author: Asad Zia
+* Version 1.0
+*/
+private static string GetRowMacro()
+{
+
+  StringBuilder sb = new StringBuilder();
+    
+  sb.Append("Function LastRow() as Integer" + "\n");
+  sb.Append("  LastRow = Application.ActiveSheet.Cells.SpecialCells(xlCellTypeLastCell).Row" + "\n");
+  sb.Append("End Function");
+
+  return sb.ToString();
+}
+        
+/*
+* Description: The macro which gets the total USED columns in the spreadsheet.
+* Author: Asad Zia
+* Version 1.0
+*/
+private static string GetColumnMacro()
+{
+
+  StringBuilder sb = new StringBuilder();
+  sb.Append("Function LastColumn() as Integer" + "\n");
+  sb.Append("  LastColumn = ActiveSheet.UsedRange.SpecialCells(xlCellTypeLastCell).Row" + "\n");
+  sb.Append("End Function");
+
+  return sb.ToString();
+}
